@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    image: tomcat:8.0
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./server.crt:/usr/local/tomcat/conf/server.crt
+      - ./server.key:/usr/local/tomcat/conf/server.key
+      - ./server.xml:/usr/local/tomcat/conf/server.xml

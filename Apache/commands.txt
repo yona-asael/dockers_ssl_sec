@@ -1,0 +1,3 @@
+sudo docker build -t apachessl .
+
+sudo docker run -p 800:800 -p 443:443 apachessl apache2-foreground

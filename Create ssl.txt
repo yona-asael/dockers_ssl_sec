@@ -1,0 +1,10 @@
+Create a san from file
+
+openssl req -new -sha256 -nodes -out server.csr -newkey rsa:2048 -keyout server.key -config <(cat req.cnf)
+
+Sign cert self
+openssl x509 -req -extfile <(printf  "subjectAltName=DNS:tomcat.yart.com,DNS:mongo.yart.com,DNS:apache.yart.com,DNS:mysql.yart.com") -days 365 -in server.csr -signkey server.key -CAcreateserial -out server.crt
+
+openssl req -x509 -noout -text -in server.crt | grep DNS
+
+openssl x509 -text -in server.crt | grep DNS
